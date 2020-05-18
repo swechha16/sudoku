@@ -52,11 +52,11 @@ class Grid:
         gap = self.width / 9
         for i in range(self.rows+1):
             if i % 3 == 0 and i != 0:
-                thick = 4
+                line = 4
             else:
-                thick = 1
-            pygame.draw.line(win, (153,204,255), (0, i*gap), (self.width, i*gap), thick)
-            pygame.draw.line(win, (153,204,255), (i * gap, 0), (i * gap, self.height), thick)
+                line = 1
+            pygame.draw.line(win, (153,204,255), (0, i*gap), (self.width, i*gap), line)
+            pygame.draw.line(win, (153,204,255), (i * gap, 0), (i * gap, self.height), line)
 
         for i in range(self.rows):
             for j in range(self.cols):
@@ -131,7 +131,7 @@ class Cube:
         self.temp = val
 
 
-def redraw_window(win, board, time, strikes):
+def redraw_window(win, board):
     win.fill((255,255,255))
     board.draw(win)
 
@@ -196,7 +196,7 @@ def main():
         if board.selected and key != None:
             board.sketch(key)
 
-        redraw_window(win, board, None, None)
+        redraw_window(win, board)
         pygame.display.update()
 
 
